@@ -17,8 +17,8 @@
     "png"
   ],
   "author": {
-    name: "Finalweb Corporation",
-    email: "jeremy@finalweb.com"
+    "name": "Finalweb Corporation",
+    "email": "jeremy@finalweb.com"
   },
   "repository": {
     "type": "git",
