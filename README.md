@@ -1,4 +1,4 @@
-# image-processor-worker
+# image-worker
 ## description
 
 Quickly get the dimensions and base64 url of an image file without blocking the UI (additional features coming later).
