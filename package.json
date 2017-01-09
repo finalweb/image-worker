@@ -1,5 +1,5 @@
 {
-  "name": "image-size-worker",
+  "name": "image-worker",
   "version": "0.1.0",
   "description": "Quickly get the dimensions of an image file without blocking the UI.",
   "main": "src/index.js",
@@ -16,7 +16,14 @@
     "jpeg",
     "png"
   ],
-  "author": "Jeremy Lane <jeremyl@finalweb.com>",
+  "author": {
+    name: "Finalweb Corporation",
+    email: "jeremy@finalweb.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finalweb/image-worker"
+  },
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.21.0",

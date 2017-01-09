@@ -16,7 +16,7 @@ module.exports = {
   output: {
     library: 'ImageProcessor',
     path: './dist',
-    filename: 'image-processor-worker.js'
+    filename: 'image-worker.js'
   },
   plugins: plugins,
   resolve: {
