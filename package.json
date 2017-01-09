@@ -1,0 +1,30 @@
+{
+  "name": "image-size-worker",
+  "version": "0.1.0",
+  "description": "Quickly get the dimensions of an image file without blocking the UI.",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack && rm -f ./dist/*.worker.js"
+  },
+  "keywords": [
+    "image",
+    "size",
+    "dimensions",
+    "resolution",
+    "width",
+    "height",
+    "jpeg",
+    "png"
+  ],
+  "author": "Jeremy Lane <jeremyl@finalweb.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-transform-es2015-modules-umd": "^6.18.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.18.0",
+    "webpack": "^2.2.0-rc.3",
+    "worker-loader": "^0.7.1"
+  }
+}
