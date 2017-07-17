@@ -3,6 +3,18 @@ var pad = function(str){
   return ('00' + str).slice(-2);
 };
 
+var validateBuffer = function (buffer, i){
+  // index should be within buffer limits
+  if (i > buffer.length) {
+    throw new TypeError('Corrupt JPG, exceeded buffer limits');
+  }
+  // Every JPEG block must begin with a 0xFF
+  if (buffer[i] !== 0xFF) {
+    console.log("BLOCK #: ", buffer[i].toString(16));
+    throw new TypeError('Invalid JPG, marker table corrupted');
+  }
+}
+
 var getHexHeader = function(ua, type) {
   var h = '',
     final = false;
@@ -12,9 +24,6 @@ var getHexHeader = function(ua, type) {
 
     var condition;
     switch (type){
-      case 'image/jpeg':
-        condition = current === 'ff' && (next === 'c0' || next === 'c2');
-        break;
       case 'image/png':
         condition = i > 20;
         break;
@@ -30,20 +39,27 @@ var getHexHeader = function(ua, type) {
   return h;
 };
 
-var detectJpeg = function(array){
-  array = getHexHeader(array, 'image/jpeg').split(' ');
-  var found = false,
-    width,
-    height;
-  for (var i = 0; i < array.length; i++){
-    if (array[i] === 'ff' && (array[i + 1] === 'c0' || array[i + 1] === 'c2') && !found){
-      var heightMarker = array[i + 5] + array[i + 6];
-      var widthMarker = array[i + 7] + array [i + 8];
+var detectJpeg = function(buffer){
+  var width,
+      height,
+      next;
+  buffer = buffer.slice(4, 128*1024);
+
+  var blockLen;
+  while(buffer.length){
+    blockLen = parseInt(pad(buffer[0].toString(16)) + pad(buffer[1].toString(16)), 16);
+
+    validateBuffer(buffer, blockLen);
+
+    next = buffer[blockLen + 1];
+    if (next === 0xC0 || next === 0xC1 || next === 0xC2) {
+      var heightMarker = pad(buffer[blockLen + 5].toString(16)) + pad(buffer[blockLen + 6].toString(16));
+      var widthMarker = pad(buffer[blockLen + 7].toString(16)) + pad(buffer[blockLen + 8].toString(16));
       width = parseInt(widthMarker, 16);
       height = parseInt(heightMarker, 16);
-      console.log('WIDTH: ', heightMarker, ' HEIGHT: ', widthMarker);
-      found = true;
+      break;
     }
+    buffer = buffer.slice(blockLen + 2);
   }
   return {width: width, height: height};
 };
