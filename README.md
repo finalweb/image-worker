@@ -8,7 +8,7 @@ Quickly get the dimensions and base64 url of an image file without blocking the 
 #### recommended
 
 ```
-npm install --save-dev image-processor-worker
+npm install --save-dev image-worker
 ```
 
 #### old school
