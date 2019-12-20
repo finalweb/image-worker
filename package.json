@@ -35,7 +35,16 @@
     "worker-loader": "^0.7.1"
   },
   "babel": {
-    "presets": [["es2015", { "modules": false }]],
-    "plugins": ["babel-plugin-transform-runtime"]
+    "presets": [
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ]
+    ],
+    "plugins": [
+      "babel-plugin-transform-runtime"
+    ]
   }
 }

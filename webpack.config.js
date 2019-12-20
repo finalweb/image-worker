@@ -15,7 +15,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     library: 'ImageProcessor',
-    path: './dist',
+    path: __dirname + '/dist',
     filename: 'image-worker.js'
   },
   plugins: plugins,

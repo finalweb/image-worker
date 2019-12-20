@@ -45,11 +45,14 @@ var detectJpeg = function(buffer){
       next;
   buffer = buffer.slice(4, 128*1024);
 
-  var blockLen;
+  var blockLen, prevBlock;
   while(buffer.length){
     blockLen = parseInt(pad(buffer[0].toString(16)) + pad(buffer[1].toString(16)), 16);
 
-    validateBuffer(buffer, blockLen);
+    if (blockLen !== prevBlock) {
+      validateBuffer(buffer, blockLen);
+      prevBlock = blockLen;
+    }
 
     next = buffer[blockLen + 1];
     if (next === 0xC0 || next === 0xC1 || next === 0xC2) {
