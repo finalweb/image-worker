@@ -1,6 +1,6 @@
 {
   "name": "image-worker",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Quickly get the dimensions of an image file without blocking the UI.",
   "main": "src/index.js",
   "scripts": {
