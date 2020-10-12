@@ -1,8 +1,8 @@
 {
   "name": "image-worker",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Quickly get the dimensions of an image file without blocking the UI.",
-  "main": "dist/image-worker.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "webpack && rm -f ./dist/*.worker.js"
   },
