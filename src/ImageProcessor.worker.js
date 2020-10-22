@@ -43,7 +43,7 @@ var detectJpeg = function(buffer){
   var width,
       height,
       next;
-  buffer = buffer.slice(4, 128*1024);
+  buffer = buffer.slice(4, 1024*1024);
 
   var blockLen, prevBlock;
   while(buffer.length){
