@@ -1,4 +1,4 @@
-var ImageWorker = require('worker-loader?inline=true!./ImageProcessor.worker.js');
+import ImageWorker from './ImageProcessor.worker.js';
 
 var _defaultOptions = {};
 

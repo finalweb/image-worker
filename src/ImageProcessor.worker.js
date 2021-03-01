@@ -41,8 +41,8 @@ var getHexHeader = function(ua, type) {
 
 var detectJpeg = function(buffer){
   var width,
-      height,
-      next;
+    height,
+    next;
   buffer = buffer.slice(4, 1024*1024);
 
   var blockLen, prevBlock;
